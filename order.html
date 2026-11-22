@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Pemesanan - WebShop Team</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="form-page-wrapper">
+  <div class="form-container">
+
+    <a href="index.html" class="form-back">
+      <i class="fa-solid fa-arrow-left"></i> Kembali ke Home
+    </a>
+
+    <div class="section-label">Langkah 1 dari 2</div>
+    <h1>Form Pemesanan</h1>
+    <p class="form-subtitle">Isi data di bawah untuk memulai pemesanan jasa website kamu.</p>
+
+    <form action="payment.html">
+      <div class="field-group">
+        <div>
+          <label class="field-label">Nama Lengkap</label>
+          <input type="text" placeholder="Contoh: Budi Santoso" required>
+        </div>
+        <div>
+          <label class="field-label">Email</label>
+          <input type="email" placeholder="email@kamu.com" required>
+        </div>
+        <div>
+          <label class="field-label">Nomor WhatsApp</label>
+          <input type="tel" placeholder="08xxxxxxxxxx" required>
+        </div>
+        <div>
+          <label class="field-label">Pilih Paket</label>
+          <select required>
+            <option value="">-- Pilih paket --</option>
+            <option>Landing Page — Rp300.000</option>
+            <option>Portfolio Website — Rp500.000</option>
+            <option>Company Profile — Rp700.000</option>
+            <option>Sistem Informasi — Rp1.500.000</option>
+          </select>
+        </div>
+        <div>
+          <label class="field-label">Catatan Tambahan</label>
+          <textarea rows="4" placeholder="Ceritakan kebutuhan website kamu..."></textarea>
+        </div>
+      </div>
+      <button type="submit">Lanjut ke Pembayaran <i class="fa-solid fa-arrow-right"></i></button>
+    </form>
+
+  </div>
+</div>
+
+</body>
+</html>

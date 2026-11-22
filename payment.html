@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pembayaran - WebShop Team</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    .info-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(124, 58, 237, 0.08);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-bottom: 16px;
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .info-box i { color: var(--accent2); margin-top: 2px; flex-shrink: 0; }
+
+    .payment-methods {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .method-option { display: none; }
+    .method-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 12px;
+      background: var(--surface2);
+      border: 1.5px solid rgba(124,58,237,0.12);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      text-align: center;
+    }
+    .method-label i { font-size: 20px; color: var(--accent2); }
+    .method-option:checked + .method-label {
+      border-color: var(--accent);
+      background: rgba(124,58,237,0.12);
+      color: var(--text);
+      box-shadow: 0 0 0 3px rgba(124,58,237,0.15);
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-page-wrapper">
+  <div class="form-container">
+
+    <a href="order.html" class="form-back">
+      <i class="fa-solid fa-arrow-left"></i> Kembali ke Form
+    </a>
+
+    <div class="section-label">Langkah 2 dari 2</div>
+    <h1>Pembayaran</h1>
+    <p class="form-subtitle">Pilih metode, lakukan transfer, lalu konfirmasi otomatis ke WhatsApp kami.</p>
+
+    <form id="paymentForm">
+      <div class="field-group">
+
+        <div>
+          <label class="field-label">Metode Pembayaran</label>
+          <div class="payment-methods">
+            <input type="radio" name="metode" id="dana" value="DANA — 0889-8626-5318" class="method-option" required>
+            <label for="dana" class="method-label"><i class="fa-solid fa-wallet"></i> DANA</label>
+
+            <input type="radio" name="metode" id="ovo" value="OVO — 0889-8626-5318" class="method-option">
+            <label for="ovo" class="method-label"><i class="fa-solid fa-mobile-screen"></i> OVO</label>
+
+            <input type="radio" name="metode" id="gopay" value="GoPay — 0889-8626-5318" class="method-option">
+            <label for="gopay" class="method-label"><i class="fa-solid fa-g"></i> GoPay</label>
+
+            <input type="radio" name="metode" id="bank" value="Transfer Bank BCA — 1234567890 a/n WebShop Team" class="method-option">
+            <label for="bank" class="method-label"><i class="fa-solid fa-building-columns"></i> Bank</label>
+          </div>
+        </div>
+
+        <div>
+          <label class="field-label">Nama Kamu</label>
+          <input type="text" id="nama" placeholder="Nama sesuai pesanan" required>
+        </div>
+
+        <div>
+          <label class="field-label">Paket yang Dipesan</label>
+          <select id="paket" required>
+            <option value="">-- Pilih paket --</option>
+            <option value="Landing Page - Rp300.000">Landing Page — Rp300.000</option>
+            <option value="Portfolio Website - Rp500.000">Portfolio Website — Rp500.000</option>
+            <option value="Company Profile - Rp700.000">Company Profile — Rp700.000</option>
+            <option value="Sistem Informasi - Rp1.500.000">Sistem Informasi — Rp1.500.000</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="info-box">
+        <i class="fa-solid fa-circle-info"></i>
+        <span>Setelah transfer, klik tombol di bawah. WhatsApp akan terbuka dengan pesan konfirmasi otomatis yang tinggal kamu kirim.</span>
+      </div>
+
+      <button type="submit">
+        <i class="fa-brands fa-whatsapp"></i> Konfirmasi via WhatsApp
+      </button>
+    </form>
+
+  </div>
+</div>
+
+<script>
+  document.getElementById('paymentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const nama = document.getElementById('nama').value;
+    const metode = document.querySelector('input[name="metode"]:checked');
+    const paket = document.getElementById('paket').value;
+    if (!nama || !metode || !paket) return;
+    const pesan =
+      `Halo WebShop Team! 👋\n\n` +
+      `Saya ingin konfirmasi pembayaran:\n\n` +
+      `👤 Nama: ${nama}\n` +
+      `📦 Paket: ${paket}\n` +
+      `💳 Metode: ${metode.value}\n\n` +
+      `Mohon dicek ya, terima kasih!`;
+    window.open(`https://wa.me/6288986265318?text=${encodeURIComponent(pesan)}`, '_blank');
+    window.location.href = 'success.html';
+  });
+</script>
+
+</body>
+</html>
